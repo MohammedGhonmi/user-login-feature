@@ -56,7 +56,8 @@ class UserService implements UserServiceInterface
             'username' => ['required', 'string', 'max:255'],
             'suffixname' => ['nullable','string', 'max:255'],
             'type' => ['nullable','string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 
+                Rule::unique(User::class)->ignore($this->request->user())],
             'image' => 'image|mimes:png,jpg,jpeg|max:2048'
         ];
     }
