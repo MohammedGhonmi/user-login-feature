@@ -39,7 +39,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(int $id)
+    public function show(int $id): View
     {
         return view('user.show',[
             'user' => $this->userService->find($id)
@@ -64,9 +64,6 @@ class UserController extends Controller
     public function store(UserCreateRequest $request): RedirectResponse
     {
         $user = $this->userService->store($request->input());
-
-        event(new Registered($user));
-
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
@@ -116,7 +113,7 @@ class UserController extends Controller
     }
 
     /**
-     * Get all soft deleted user's.
+     * Restore soft deleted user.
      */
     public function restore ($id): RedirectResponse
     {   

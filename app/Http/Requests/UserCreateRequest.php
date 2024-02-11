@@ -20,7 +20,7 @@ class UserCreateRequest extends FormRequest
         return array_merge($this->container->make(
             UserServiceInterface::class
         )->rules($this->user),[
-            'password' => ['required', 'confirmed', Rules\Password::defaults()]
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);            
     }
 }

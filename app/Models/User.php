@@ -17,7 +17,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     /**
-     * Get the parent commentable model (post or video).
+     * Get the parent userable model (detail).
      */
     public function userable(): MorphTo
     {
@@ -43,6 +43,8 @@ class User extends Authenticatable
         'firstname',
         'middlename',
         'lastname',
+        'suffixname',
+        'type',
         'username',
         'email',
         'password',

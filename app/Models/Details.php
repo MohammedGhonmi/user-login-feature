@@ -12,7 +12,7 @@ class Details extends Model
     use HasFactory;
     
     /**
-     * Get the post's image.
+     * Get the details's user.
      */
     public function user(): MorphOne
     {
